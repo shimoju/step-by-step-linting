@@ -2,10 +2,13 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "lint:js": "eslint --format codeframe",
+    "lint:js:fix": "eslint --format codeframe --fix"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
+    "eslint": "^3.11.1",
     "gulp": "^3.9.1",
     "jquery": "^3.1.0",
     "laravel-elixir": "^6.0.0-9",

@@ -1,0 +1,130 @@
+env:
+  browser: true
+  node: true
+  jquery: true
+# ここでチェックマークのついているルールが有効になる
+# http://eslint.org/docs/rules/
+extends: 'eslint:recommended'
+rules:
+  # グローバル変数は修正の影響範囲が大きいためwarnに
+  no-undef:
+    - warn
+  # 自動修正が容易なStylistic Issuesは多めに入れる
+  # http://eslint.org/docs/rules/#stylistic-issues
+  # 配列の括弧内にスペースを入れない NG: [ x, y ]
+  array-bracket-spacing:
+    - error
+    - never
+  # ブロックの括弧内にスペースを入れる NG: x() {return true;}
+  block-spacing:
+    - error
+    - always
+  # ブロックの始まり{は同じ行に置くスタイル NG: if (foo)\n{
+  brace-style:
+    - error
+    - 1tbs
+    - allowSingleLine: true
+  # 配列などの最後のコンマは複数行の場合のみ許可 NG: [x, y,]
+  comma-dangle:
+    - error
+    - only-multiline
+  # コンマの前はスペース入れない、後は入れる NG: [1,2]
+  comma-spacing:
+    - error
+    - before: false
+      after: true
+  # コンマで改行する場合、行の最後に入れる
+  comma-style:
+    - error
+    - last
+  # プロパティアクセスの括弧内はスペースを入れない NG: obj[ foo ]
+  computed-property-spacing:
+    - error
+    - never
+  # ファイルの末尾は改行で終わらせる
+  eol-last:
+    - error
+    - always
+  # 関数呼び出しの括弧との間にはスペースを入れない NG: alert ('Hello')
+  func-call-spacing:
+    - error
+    - never
+  # インデントはスペース4つ
+  indent:
+    - error
+    - 4
+  # オブジェクトのコロンの前はスペース入れない、後ろは入れる NG: var obj = { 'foo' : 42 };
+  key-spacing:
+    - error
+    - beforeColon: false
+      afterColon: true
+      mode: strict
+  # 予約語の前後にスペースを入れる NG: if(foo) {...} else{...
+  keyword-spacing:
+    - error
+    - before: true
+      after: true
+  # 改行コードはLF
+  linebreak-style:
+    - error
+    - unix
+  # ブロックコメントの前に改行を入れる
+  lines-around-comment:
+    - error
+    - beforeBlockComment: true
+  # 'use strict'; などのディレクティブの後には改行を入れる
+  lines-around-directive:
+    - error
+    - always
+  # elseブロックの中にifを置かない、else if (...とする
+  no-lonely-if:
+    - error
+  # 連続した改行は2つまで
+  no-multiple-empty-lines:
+    - error
+    - max: 2
+  # 行末にスペースを入れない
+  no-trailing-spaces:
+    - error
+    - skipBlankLines: false
+  # プロパティアクセスにスペースを入れない NG: foo [bar]; foo .bar
+  no-whitespace-before-property:
+    - error
+  # ブロックに空行を入れない
+  padded-blocks:
+    - error
+    - never
+  # 文字列はシングルクォート
+  quotes:
+    - error
+    - single
+  # セミコロンの前にスペース入れない、後に入れる NG: var c = "d";var e = "f";
+  semi-spacing:
+    - error
+    - before: false
+      after: true
+  # セミコロンを常に入れる
+  semi:
+    - error
+    - always
+  # ブロック始まりにスペースを入れる NG: if (a){
+  space-before-blocks:
+    - error
+    - always
+  # 関数名と()の間にスペースを入れない NG: function foo () {
+  space-before-function-paren:
+    - error
+    - never
+  # ()の中にスペースを入れない NG: foo( 'bar');
+  space-in-parens:
+    - error
+    - never
+  # 単項演算子は文字ならスペース入れる、記号は入れない NG: typeof!foo; foo --;
+  space-unary-ops:
+    - error
+    - words: true
+      nonwords: false
+  # ファイルにBOMは入れない
+  unicode-bom:
+    - error
+    - never

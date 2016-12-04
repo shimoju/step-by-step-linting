@@ -87,5 +87,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="js/hoge.js"></script>
     </body>
 </html>

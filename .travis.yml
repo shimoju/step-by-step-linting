@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - '7.0'
+
+env:
+  - APP_KEY=base64:vZDKdrdkVtd16nshCKXbt6lg2832Lo7O11phC29hx8Y=
+
+before_script:
+  - nvm install 6.9 && nvm alias default 6.9
+  - npm install
+  - composer install
+
+script:
+  - bin/check-coding-rule
+  - phpunit
+
+notifications:
+  email: false

@@ -1,7 +1,10 @@
 env:
   browser: true
+  es6: true
   node: true
   jquery: true
+parserOptions:
+  sourceType: module
 # ここでチェックマークのついているルールが有効になる
 # http://eslint.org/docs/rules/
 extends: 'eslint:recommended'

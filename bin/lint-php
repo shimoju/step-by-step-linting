@@ -1,0 +1,10 @@
+#!/bin/bash
+
+file=$1
+opt=$2
+
+if [ "$opt" = "--fix" ]; then
+    ./vendor/composer/bin/php-cs-fixer fix $file --diff --verbose --config .php_cs
+else
+    ./vendor/composer/bin/php-cs-fixer fix $file --diff --verbose --dry-run --config .php_cs
+fi

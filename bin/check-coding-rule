@@ -1,0 +1,30 @@
+#!/bin/bash
+
+function diff-filter-ext() {
+    git diff --name-only --diff-filter=ACM origin/master...HEAD | grep "\.$1$"
+}
+
+lint_langs=()
+options=()
+for arg in "$@"
+do
+    case "$arg" in
+        # --で始まっていればオプションとみなし、それ以外はlintする言語指定とみなす
+        --* ) options+=( "$arg" ) ;;
+        * ) lint_langs+=( "$arg" ) ;;
+    esac
+done
+
+# 言語指定がなければ全言語に対してlintをかける
+if [ ${#lint_langs[@]} = 0 ]; then
+    lint_langs=(php js)
+fi
+
+status=0
+for lang in ${lint_langs[@]}
+do
+    diff-filter-ext $lang | xargs -t -n1 -I'FILE' bin/lint-$lang FILE ${options[@]}
+    if [ $? != 0 ]; then status=1; fi
+done
+
+if [ $status != 0 ]; then exit 1; fi

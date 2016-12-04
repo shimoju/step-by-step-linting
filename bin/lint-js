@@ -1,0 +1,11 @@
+#!/bin/bash
+
+file=$1
+opt=$2
+
+if [ "$opt" = "--fix" ]; then
+    # --silentはeslintではなくnpmのオプション(npm側のログ表示を抑える)
+    npm run --silent lint:js:fix $file
+else
+    npm run --silent lint:js $file
+fi
